@@ -40,8 +40,37 @@ app.listen(PORT, () => console.log(`Server running on port: http://localhost:${P
 ```
 
 
-## Users
+## User Post with POSTMAN
 ---
 
 
 We are going to create users for this Demo, so we can use basic CRUD operations on a user. Read Operations are great for browser development but POSTING, is why we need to use a tool call PostMan, If you don't have it installed. Install it now.
+
+
+1. Once we have POSTman installed
+   - add localhost:5000 and confirm it is hitting our development message "Hello from homepage"
+
+
+2. Next we need to make sure  || MOST IMPORTANT ISSUES MAKE SURE THIS IS ACCURATE
+   1. Move from params to Body tab
+   2. Change none to 'raw'
+   3. Change Text to 'JavaScript'
+
+
+3. Lets add a post route to our users.js
+   1.  Console.log ('POST Route Reached') first.
+   2.  Lets add a res.send too
+
+4. Inside postman, lets go to localhost:5000/users
+   1. we should get 'Post Route Reached' in postman body (for the res.send)
+   2. we should also get post route reached inside the terminal
+
+
+5. Because we are using a MOCK DB are users wont save, because everytime the server is rs its removed.
+
+6. lets continue like we would with a DB anyway to make sure we understand express.
+   1. PUSH is how
+   2. If we console.log(req.body) in our post, we will get the 
+
+
+

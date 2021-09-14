@@ -28,6 +28,9 @@ router.get('/', (req, res) => {
 
 //CRUD CREATE OPERATION
 router.post('/', (req, res) => {
+    const user = req.body;
+    users.push(user);
+    res.send(`User with the username ${user.firstName} added to the DB!`)
 
 })
 
