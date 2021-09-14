@@ -73,4 +73,21 @@ We are going to create users for this Demo, so we can use basic CRUD operations 
    2. If we console.log(req.body) in our post, we will get the 
 
 
+7. Next we need to add ID's to our users to differenciate our users.
+   1. install the the package uuid
+      1. npm i uuid
+      2. import 
+      3. then we need to add the ID WHEN we are creating the USER
+      4. We ned to create a new user by using the spread operator {...} and adding the property id: userId
+   ``const userWithId = { ...user, id: userId}``
+      5. We can refactor our code and actually grab the spread command and id with uuidv4 and put that in the push
+```
+router.post('/', (req, res) => {
+    const user = req.body;
+    users.push({ ...user, id: uuidv4() });
+    res.send(`User with the username ${user.firstName} added to the DB!`)
+
+})
+```
+
 
