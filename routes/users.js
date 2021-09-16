@@ -9,16 +9,7 @@ const router = express.Router();
 
 
 const users = [
-    {
-    firstName: "John",
-    lastName: "Doe",
-    age: "25"
-    },
-    {
-    firstName: "Jane",
-    lastName: "Doe",
-    age: "26"
-    }
+   
 ]
 
 //CRUD READ OPERATION
@@ -30,6 +21,7 @@ router.get('/', (req, res) => {
 
 //CRUD CREATE OPERATION
 router.post('/', (req, res) => {
+    console.log(req.body)
     const user = req.body;
     users.push({ ...user, id: uuidv4() });
     res.send(`User with the username ${user.firstName} added to the DB!`)

@@ -90,3 +90,4 @@ router.post('/', (req, res) => {
 })
 ```
 
+8. Now that we have our ID in place we can delete our MOCK db users and only post new users.
