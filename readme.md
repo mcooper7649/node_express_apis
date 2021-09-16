@@ -91,3 +91,23 @@ router.post('/', (req, res) => {
 ```
 
 8. Now that we have our ID in place we can delete our MOCK db users and only post new users.
+   1. delete the hardcoded users db
+
+9. Next we can setup another get route, to look for ID
+10. If we res.send the req.params we have the data that was queried. 
+11. http://localhost:5000/users/2 will return id: "2"
+
+```router.get('/:id', (req, res) => {
+    res.send(req.params)
+})
+```
+
+10. Now that we know we have access to the id requested we can assign a variable to our req.params 
+   `` const { id } = req.params;``
+11. Next we can use some basic javascript by calling the method on our users db.
+
+
+12. Next we can post 2 more users to add them to our DB via postman
+    1.  go to localhost:5000/users and grab an id that was generated on your previous posts
+    2.  then go to localhost:5000/users/pasteTheIdHere  and you will see your USER!!!
+    3.  The idea is then we create more routes that lets us access that id, then we can edit values of that ID
