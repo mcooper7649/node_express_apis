@@ -111,3 +111,17 @@ router.post('/', (req, res) => {
     1.  go to localhost:5000/users and grab an id that was generated on your previous posts
     2.  then go to localhost:5000/users/pasteTheIdHere  and you will see your USER!!!
     3.  The idea is then we create more routes that lets us access that id, then we can edit values of that ID
+
+
+13. Lets create the delete route next.
+    1.  first create the router.delete with '/:id'
+    2.  set { id } = req.params
+    3.  set our users db = users.filter((user) => user.id !id)
+        1.  this our users DB filters to only leave users w/o the id of the req.params
+    4. Next post two more user to our DB to test it out
+    5. Get one of our new users ID
+    6. Change teh postman from get to DELETE
+       1. after localhost:5000/users/pasteYourIdHere
+       2. Send (if you get an error, change our const for our array to let)
+       3. in postman you should get a message like "User with the id 34b8ba88-421c-4979-902a-2a65032a8b68 deleted from the db."
+       4. SUCCESS. you can run a get on the users again to confirm from postman TOO
