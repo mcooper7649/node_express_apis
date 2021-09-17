@@ -125,3 +125,23 @@ router.post('/', (req, res) => {
        2. Send (if you get an error, change our const for our array to let)
        3. in postman you should get a message like "User with the id 34b8ba88-421c-4979-902a-2a65032a8b68 deleted from the db."
        4. SUCCESS. you can run a get on the users again to confirm from postman TOO
+
+14. Now we just need to be able to update our user
+    1.  Patch request is to update a user or object
+    2.  Post is completely NEW
+    3.  PUT is when you want to completely OVERWRITE
+    4.  if you JUST want to modify one property, USE PATCH
+
+15. First we need to setup our patch router to find our user by id. 
+    ```
+    router.patch('/:id', (req, res) => {
+    const { id } = req.params;
+
+    const user = users.find((user) => user.id === id) 
+        user
+    
+
+    res.send(`User with the id ${id} updated from the db.`);
+   })
+   ```
+16. Next we need to send our update payload in POSTMAN.
