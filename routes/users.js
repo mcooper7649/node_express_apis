@@ -1,6 +1,9 @@
 import express from 'express';
-import { v4 as uuidv4 } from 'uuid';
-
+import { createUser } from '../controllers/users.js';
+import { getAllUsers } from '../controllers/users.js';
+import { getUser } from '../controllers/users.js';
+import { deleteUser } from '../controllers/users.js';
+import { patchUser } from '../controllers/users.js';
 
 const router = express.Router();
 
@@ -14,61 +17,26 @@ let users = [
 
 //CRUD READ OPERATION
 
-router.get('/', (req, res) => {
-    res.send(users)
-});
+router.get('/', getAllUsers);
 
 // users/2 => req.param { id: 2}
 
-router.get('/:id', (req, res) => {
-    const { id } = req.params;
-
-   const foundUser = users.find((user) => user.id === id);
-
-    res.send(foundUser);
-})
+router.get('/:id', getUser)
 
 
 
 
 //CRUD CREATE OPERATION
-router.post('/', (req, res) => {
-    console.log(req.body)
-    const user = req.body;
-    users.push({ ...user, id: uuidv4() });
-    res.send(`User with the username ${user.firstName} added to the DB!`)
-
-})
+router.post('/', createUser);
 
 
 // DELETE
 
-router.delete('/:id', (req, res) => {
-    const { id } = req.params;
+router.delete('/:id', deleteUser);
 
-    users = users.filter((user) => user.id != id) 
-    res.send(`User with the id ${id} deleted from the db.`);
-})
+//Patch for updating a user without replacing
 
-router.patch('/:id', (req, res) => {
-    const { id } = req.params;
-
-    const user = users.find((user) => user.id === id) 
-    const { firstName, lastName, age } = req.body;
-
-    if(firstName){
-        user.firstName = firstName;
-        user.age = age;
-    }
-    if(lastName){
-        user.lastName = lastName;
-    }
-    if(age){
-        user.age = age;
-    }
-
-    res.send(`User with the id ${id} updated from the db.`);
-})
+router.patch('/:id', patchUser)
 
 
 

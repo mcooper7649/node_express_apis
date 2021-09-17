@@ -145,3 +145,33 @@ router.post('/', (req, res) => {
    })
    ```
 16. Next we need to send our update payload in POSTMAN.
+   1. First we need to again post 2 new test users to our DB
+   2. Next we need to copy an ID, lets pick Joes
+   3. Next we go into postman and change to PATCH
+   4. users/pasteTheID
+   5. inside our BODY, only patch an object with the firstName changed from Joe to johnny.
+   6. create a const from our req.body with our properties we want to change. ``const { firstName, lastName, age } = req.body;``
+   7. Create an if statement, to check if there is a first name
+
+
+17. next we want to seperate our routes and our code so its cleaner.
+   1. First we will create a controllers folder in root w/ users.js
+   2. next inside our routers folder, inside the post route copy the code after '/'
+```
+const createUser = (req, res) => {
+    console.log(req.body)
+    const user = req.body;
+    users.push({ ...user, id: uuidv4() });
+    res.send(`User with the username ${user.firstName} added to the DB!`)
+
+};
+
+
+//CRUD CREATE OPERATION
+router.post('/', createUser );
+```
+   3. Next lets take our createUser function and move to the controllers
+   4. export const next to each function
+   5. Complete all otehr routes next
+   6. Next we need to move the import of uuid as its not being used in the routes users.js anymore and it is in the controller users.js
+   7. MAKE SURE YOUR IMPORT WITH .JS or it wont work!
